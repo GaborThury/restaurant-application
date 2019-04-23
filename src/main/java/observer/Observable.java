@@ -9,6 +9,7 @@ public abstract class Observable<E> {
     }
 
     public boolean addObserver(Observable<E> observable) {
+
         return false;
     }
 

@@ -1,6 +1,7 @@
 package factory;
 
 import domain.Food;
+import domain.FoodExtraDecorator;
 import domain.Order;
 
 import java.util.List;
@@ -17,27 +18,41 @@ public class FoodFactory {
 
     public static Food createFood(Order order) {
         System.out.println("FoodFactory: Preparing food, order: " + order.toString());
-        Food mainFood = createMainFood(order.getFood());
-        System.out.println("Food prepared: " + mainFood.toString());
-        return mainFood;
+        Food food = createMainFood(order.getFood());
+        food = addExtras(food, order.getExtras());
+        System.out.println("Food prepared: " + food.toString());
+        return food;
     }
 
     private static Food createMainFood(final String foodName) {
         return new Food() {
-            public double calculateHappiness(double d) {
+            public double calculateHappiness(double happiness) {
                 if ("hotdog".equalsIgnoreCase(foodName)) {
-                    return d + 2;
+                    return happiness + 2;
                 } else if ("chips".equalsIgnoreCase(foodName)) {
-                    return d * 1.05;
+                    return happiness * 1.05;
                 }
                 return 0;
             }
         };
     }
 
-    private static Food addExtras(Food food, List<String> extras) {
-
-        return null;
+    private static Food addExtras(Food food, final List<String> extras) {
+        return new FoodExtraDecorator(food) {
+            public double calculateHappiness(double happiness) {
+                double happinessChange = happiness;
+                for (String extra : extras) {
+                    if ("ketchup".equalsIgnoreCase(extra)) {
+                        happinessChange = happinessChange * 2;
+                    } else if ("mustard".equalsIgnoreCase(extra)) {
+                        happinessChange += 1;
+                    } else {
+                        return happinessChange;
+                    }
+                }
+                return 0;
+            }
+        };
     }
-
 }
+

@@ -6,7 +6,6 @@ import domain.Order;
 import factory.FoodFactory;
 
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class CookRobot {
@@ -24,7 +23,7 @@ public class CookRobot {
     }
 
     public void processOrders() {
-        System.out.println("Processing " + orders.size() + "order(s)...");
+        System.out.println("Processing " + orders.size() + " order(s)...");
         Food food = FoodFactory.createFood(orders.remove());
     }
 

@@ -1,5 +1,5 @@
 package domain;
 
 public interface Food {
-    double calculateHappiness(double d);
+    double calculateHappiness(double happiness);
 }
