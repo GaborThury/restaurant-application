@@ -1,8 +1,6 @@
 package factory;
 
-import domain.Food;
-import domain.FoodExtraDecorator;
-import domain.Order;
+import domain.*;
 
 import java.util.List;
 
@@ -27,10 +25,10 @@ public class FoodFactory {
     private static Food createMainFood(final String foodName) {
         return new Food() {
             public double calculateHappiness(double happiness) {
-                if ("hotdog".equalsIgnoreCase(foodName)) {
-                    return happiness + 2;
-                } else if ("chips".equalsIgnoreCase(foodName)) {
-                    return happiness * 1.05;
+                if (HOTDOG.equalsIgnoreCase(foodName)) {
+                    return 2;
+                } else if (CHIPS.equalsIgnoreCase(foodName)) {
+                    return (happiness * 1.05) - happiness;
                 }
                 return 0;
             }
@@ -38,21 +36,14 @@ public class FoodFactory {
     }
 
     private static Food addExtras(Food food, final List<String> extras) {
-        return new FoodExtraDecorator(food) {
-            public double calculateHappiness(double happiness) {
-                double happinessChange = happiness;
-                for (String extra : extras) {
-                    if ("ketchup".equalsIgnoreCase(extra)) {
-                        happinessChange = happinessChange * 2;
-                    } else if ("mustard".equalsIgnoreCase(extra)) {
-                        happinessChange += 1;
-                    } else {
-                        return happinessChange;
-                    }
-                }
-                return 0;
+        for (String extra : extras) {
+            if (KETCHUP.equalsIgnoreCase(extra)) {
+                food = new KetchupDecorator(food);
+            } else if (MUSTARD.equalsIgnoreCase(extra)) {
+                food = new MustardDecorator(food);
             }
-        };
+        }
+        return food;
     }
 }
 

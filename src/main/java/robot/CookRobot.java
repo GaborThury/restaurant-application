@@ -20,7 +20,7 @@ public class CookRobot {
         orders.add(order);
         System.out.print("CookRobot: Order registered, ");
         System.out.print("Client: " + client.toString());
-        System.out.println("Order: " + order.toString());
+        System.out.println(", Order: " + order.toString());
     }
 
     public void processOrders() {
@@ -28,8 +28,8 @@ public class CookRobot {
         System.out.println("CookRobot: Processing " + numberOfOrders + " order(s)...");
 
         for (int i = 0; i < numberOfOrders; i++) {
-            FoodFactory.createFood(orders.element());
-            orders.element().notifyObservers();
+            Food food = FoodFactory.createFood(orders.element());
+            orders.remove().notifyObservers(food);
         }
         System.out.println("CookRobot: Orders processed.");
     }

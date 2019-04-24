@@ -1,5 +1,7 @@
 package observer;
 
-public interface Observer<E> {
-    void update(E value);
+import domain.Food;
+
+public interface Observer {
+    void update(Food value);
 }
