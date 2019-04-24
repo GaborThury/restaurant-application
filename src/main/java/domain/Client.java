@@ -1,7 +1,6 @@
 package domain;
 
 import lombok.ToString;
-import observer.Observable;
 import observer.Observer;
 
 @ToString
