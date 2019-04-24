@@ -24,14 +24,14 @@ public class CookRobot {
     }
 
     public void processOrders() {
-        int numberOfElements = orders.size();
-        System.out.println("Processing " + numberOfElements + " order(s)...");
+        int numberOfOrders = orders.size();
+        System.out.println("CookRobot: Processing " + numberOfOrders + " order(s)...");
 
-        for (int i = 0; i < numberOfElements; i++) {
-            // todo: notifying observers of order
+        for (int i = 0; i < numberOfOrders; i++) {
             FoodFactory.createFood(orders.element());
             orders.element().notifyObservers();
         }
+        System.out.println("CookRobot: Orders processed.");
     }
 
 }

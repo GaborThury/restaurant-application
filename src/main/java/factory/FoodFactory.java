@@ -20,7 +20,7 @@ public class FoodFactory {
         System.out.println("FoodFactory: Preparing food, order: " + order.toString());
         Food food = createMainFood(order.getFood());
         food = addExtras(food, order.getExtras());
-        System.out.println("Food prepared: " + food.toString());
+        System.out.println("FoodFactory: Food prepared: " + food.toString());
         return food;
     }
 

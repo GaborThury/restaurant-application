@@ -17,9 +17,11 @@ public class Order extends Observable<Client> {
         this.extras = extras;
     }
 
-    @Override
+    
     public void notifyObservers() {
         System.out.println("Order: Notifying observers of " + this.toString());
         super.notifyObservers();
+        System.out.println("Order: Notification done.");
     }
+
 }

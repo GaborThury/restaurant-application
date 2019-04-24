@@ -20,16 +20,11 @@ public class Client implements Observer<Client> {
 
     public void consume(Food food) {
         System.out.println("Client: Started to eat food, client: " + this.toString() + food.toString());
-        System.out.println("Csam csam nyam nyam");
-        System.out.println("Food eaten, client: " + this.toString());
+        System.out.println("Client: Csam csam nyam nyam");
+        System.out.println("Client: Food eaten, client: " + this.toString());
     }
 
-    public void update(Food food) {
-
-    }
-
-
-    public void update(Observable<Client> object) {
+    public void update(Client value) {
 
     }
 }
