@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @ToString
-public class Order extends Observable {
+public class Order extends Observable<Client> {
     private final String food;
     private final List<String> extras;
 
@@ -18,9 +18,9 @@ public class Order extends Observable {
     }
 
     @Override
-    public void notifyObservers(Food value) {
+    public void notifyObservers(Food food) {
         System.out.println("Order: Notifying observers of " + this.toString());
-        super.notifyObservers(value);
+        super.notifyObservers(food);
         System.out.println("Order: Notification done.");
     }
 

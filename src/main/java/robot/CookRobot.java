@@ -18,9 +18,8 @@ public class CookRobot {
     public void addOrder(Client client, Order order) {
         order.addObserver(client);
         orders.add(order);
-        System.out.print("CookRobot: Order registered, ");
-        System.out.print("Client: " + client.toString());
-        System.out.println(", Order: " + order.toString());
+        System.out.format("CookRobot: Order registered, Client: %s, Order: %s \n",
+                client.toString(), order.toString());
     }
 
     public void processOrders() {

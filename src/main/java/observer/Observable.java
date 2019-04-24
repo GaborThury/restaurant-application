@@ -15,9 +15,9 @@ public abstract class Observable<E> {
         return observers.add(observer);
     }
 
-    public void notifyObservers(Food value) {
+    public void notifyObservers(Food food) {
         for (Observer observer : observers) {
-            observer.update(value);
+            observer.update(food);
         }
     }
 }

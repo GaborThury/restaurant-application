@@ -4,7 +4,7 @@ import lombok.ToString;
 import observer.Observer;
 
 @ToString
-public class Client implements Observer {
+public class Client implements Observer<Client> {
     private String name;
     private double happiness;
 
@@ -24,9 +24,8 @@ public class Client implements Observer {
         System.out.println("Client: Food eaten, client: " + this.toString());
     }
 
-
-    public void update(Food value) {
-        consume(value);
+    public void update(Food food) {
+        consume(food);
     }
 
 }

@@ -3,5 +3,5 @@ package observer;
 import domain.Food;
 
 public interface Observer<E> {
-    void update(Food value);
+    void update(Food food);
 }
