@@ -16,6 +16,7 @@ public class CookRobot {
     }
 
     public void addOrder(Client client, Order order) {
+        order.addObserver(client);
         orders.add(order);
         System.out.print("CookRobot: Order registered, ");
         System.out.print("Client: " + client.toString());
@@ -23,8 +24,14 @@ public class CookRobot {
     }
 
     public void processOrders() {
-        System.out.println("Processing " + orders.size() + " order(s)...");
-        Food food = FoodFactory.createFood(orders.remove());
+        int numberOfElements = orders.size();
+        System.out.println("Processing " + numberOfElements + " order(s)...");
+
+        for (int i = 0; i < numberOfElements; i++) {
+            // todo: notifying observers of order
+            FoodFactory.createFood(orders.element());
+            orders.element().notifyObservers();
+        }
     }
 
 }

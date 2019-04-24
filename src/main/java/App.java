@@ -2,10 +2,8 @@ import domain.Client;
 import domain.Order;
 import robot.CookRobot;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 public class App {
 
@@ -18,7 +16,7 @@ public class App {
         - The orders are prepared by a robot one after another (FIFO)
         - The client receives and consumes the products*/
 
-        // TODO: Orders are created here and sent to CookRobot
+
 
         Order order1 = new Order("hotdog", Collections.singletonList("ketchup"));
         Order order2 = new Order("chips", Arrays.asList("ketchup", "mustard"));

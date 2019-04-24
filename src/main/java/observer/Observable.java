@@ -1,19 +1,21 @@
 package observer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Observable<E> {
-    private List<Observer<E>> observers;
+    private List<Observer<E>> observers = new ArrayList<Observer<E>>();
 
     public Observable() {
     }
 
-    public boolean addObserver(Observable<E> observable) {
-
-        return false;
+    public boolean addObserver(Observer<E> observer) {
+        return observers.add(observer);
     }
 
-    public void notifyObservables(E type) {
-
+    public void notifyObservers() {
+        for (Observer<E> observer : observers) {
+            observer.update(this);
+        }
     }
 }

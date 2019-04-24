@@ -10,7 +10,4 @@ public abstract class FoodExtraDecorator implements Food {
     public FoodExtraDecorator(Food food) {
         this.food = food;
     }
-
-
-
 }
