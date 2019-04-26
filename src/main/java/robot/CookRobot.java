@@ -23,13 +23,13 @@ public class CookRobot {
     }
 
     public void processOrders() {
-        int numberOfOrders = orders.size();
-        System.out.println("CookRobot: Processing " + numberOfOrders + " order(s)...");
+        System.out.println("CookRobot: Processing " + orders.size() + " order(s)...");
 
-        for (int i = 0; i < numberOfOrders; i++) {
+        orders.forEach(order -> {
             Food food = FoodFactory.createFood(orders.element());
-            orders.remove().notifyObservers(food);
-        }
+            orders.element().notifyObservers(food);
+        });
+        orders.clear();
         System.out.println("CookRobot: Orders processed.");
     }
 

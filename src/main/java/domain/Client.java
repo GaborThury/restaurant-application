@@ -20,7 +20,7 @@ public class Client implements Observer<Client> {
     public void consume(Food food) {
         System.out.println("Client: Started to eat food, client: " + this.toString() + food.toString());
         System.out.println("Client: Csam csam nyam nyam");
-        happiness += food.calculateHappiness(getHappiness());
+        happiness += food.calculateHappiness(happiness);
         System.out.println("Client: Food eaten, client: " + this.toString());
     }
 

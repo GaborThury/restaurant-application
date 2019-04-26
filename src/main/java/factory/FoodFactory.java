@@ -10,6 +10,8 @@ public class FoodFactory {
     private static final String CHIPS = "chips";
     private static final String MUSTARD = "mustard";
     private static final String KETCHUP = "ketchup";
+    private static final int HOTDOG_HAPPINESS_INCREASER = 2;
+    private static final double CHIPS_HAPPINESS_INCREASER = 0.05;
 
     public FoodFactory() {
     }
@@ -23,15 +25,13 @@ public class FoodFactory {
     }
 
     private static Food createMainFood(final String foodName) {
-        return new Food() {
-            public double calculateHappiness(double happiness) {
-                if (HOTDOG.equalsIgnoreCase(foodName)) {
-                    return 2;
-                } else if (CHIPS.equalsIgnoreCase(foodName)) {
-                    return (happiness * 1.05) - happiness;
-                }
-                return 0;
+        return (happiness) -> {
+            if (HOTDOG.equalsIgnoreCase(foodName)) {
+                return HOTDOG_HAPPINESS_INCREASER;
+            } else if (CHIPS.equalsIgnoreCase(foodName)) {
+                return happiness * CHIPS_HAPPINESS_INCREASER;
             }
+            return 0;
         };
     }
 
