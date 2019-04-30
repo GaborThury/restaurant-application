@@ -26,8 +26,8 @@ public class CookRobot {
         System.out.println("CookRobot: Processing " + orders.size() + " order(s)...");
 
         orders.forEach(order -> {
-            Food food = FoodFactory.createFood(orders.element());
-            orders.element().notifyObservers(food);
+            Food food = FoodFactory.createFood(order);
+            order.notifyObservers(food);
         });
         orders.clear();
         System.out.println("CookRobot: Orders processed.");
